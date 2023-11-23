@@ -1,0 +1,63 @@
+.event {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-image: url(../img/bg.jpg);
+  background-color: #023E5D;
+  background-size: cover;
+  background-position: center;
+  color: #fff;
+}
+.event__title {
+  font-size: 100px;
+  font-weight: 800;
+  line-height: 1.2;
+  margin-bottom: 62px;
+}
+.event__info {
+  display: flex;
+  gap: 80px;
+  margin-bottom: 62px;
+}
+.event__info-item {
+  font-size: 30px;
+  /* font-weight: 400; */
+  /* line-height: 1.4;  */
+  line-height: 2; 
+  display: flex;
+  gap: 8px;
+  align-items: end;
+}
+.event__info-number {
+  font-size: 80px;
+  font-weight: 800;
+  line-height: 1.2;
+}
+/* .event__info-item_day {
+}
+.event__info-item_hall {
+}
+.event__info-item_duration {
+}
+.event__info-item_comedians {
+} */
+.event__button {
+  font-size: 24px;
+  line-height: 1.4;
+}
+.event__button_reserve {
+  padding: 16px 36px;
+  border-radius: 36px;
+  color: #1A1A1A;
+  background-color: #FFC119;
+  margin-bottom: 24px;
+}
+.event__button_edit{
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  font-size: 18px;
+}
