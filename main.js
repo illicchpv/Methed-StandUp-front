@@ -160,7 +160,11 @@ async function getComedians() {
 const init = async () => {
     const comedians = await getComedians()
     document.querySelector('.event__info-item_comedians .event__info-number').textContent = comedians.length
-    // console.log('comedians', comedians)
+    console.log('comedians', comedians)
+    for(const comed of comedians){
+        comed.comedian = comed.comedian.toLowerCase()
+        console.log('comed.comedian:', comed.comedian)
+    }
 
     const comedianBlock = createComedianBlock(comedians)
     bookingComediansList.append(comedianBlock)
