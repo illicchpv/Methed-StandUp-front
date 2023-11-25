@@ -75,5 +75,8 @@ fieldset{
   /*color: red;*/
 }
 
+.just-validate-error-label{
+  display: none;
+}
 
 
