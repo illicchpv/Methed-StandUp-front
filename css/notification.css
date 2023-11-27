@@ -12,6 +12,7 @@
     background: #BABABA;
     padding: 32px;
     z-index: 1000;
+    transition: transform 0.3s ease, opacity 0.3s ease;
     opacity: 0;
     transform: translateX(100%);
 }
