@@ -1,8 +1,12 @@
 import TomSelect from "tom-select";
 
 const MAX_COMEDIANS = 6
+let _comedians = false
 
 export const createComedianBlock = (comedians) => {
+    if(!comedians)
+        comedians = _comedians
+    _comedians = comedians
     const bookingComedian = document.createElement('li')
     bookingComedian.classList.add('booking__comedian')
     bookingComedian.innerHTML = `

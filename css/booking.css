@@ -6,6 +6,16 @@
   color: #1A1A1A;
   background-color: #EBECF1;
   padding: 50px 0;
+  transition: opacity 0.5s, visibility 0.5s;
+  opacity: 1;
+  visibility: visible;
+}
+.booking_hidden{
+  display: none;
+  opacity: 0;
+  visibility: hidden;
+  position: absolute;
+  width: 100%;
 }
 .booking__container {
   margin: 0 auto;
@@ -70,7 +80,7 @@
 }
 .booking__input_phone {
 }
-.booking__input_tiket {
+.booking__input_ticket {
 } */
 .booking__fieldset_user-comedians {
   margin-bottom: 122px;

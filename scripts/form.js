@@ -2,10 +2,21 @@ import JustValidate from "just-validate";
 import Inputmask from "inputmask";
 import TomSelect from "tom-select";
 import {notification} from "../main.js";
+import {sendData} from "./api.js";
+import {createComedianBlock} from "./comedians.js";
 
-export const initForm = (bookingForm, bookingInpPhone, bookingInpTicket, bookingInpFullname) => {
-    bookingForm.addEventListener('submit', (e) => {
+export const initForm = (bookingForm,
+                         bookingInpPhone,
+                         bookingInpTicket,
+                         bookingInpFullname,
+                         changeSection,
+                         bookingComediansList
+) => {
+    bookingForm.addEventListener('submit', async (e) => {
         e.preventDefault()
+        if(!validate.isValid)
+            return
+
         const data = {booking: []}
         const times = new Set()
 
@@ -19,14 +30,38 @@ export const initForm = (bookingForm, bookingInpPhone, bookingInpTicket, booking
                     times.add(time)
                 }
             } else {
-                data[field] = val
-            }
-            // console.log(field, times.size, data.booking.length)
-            if (times.size !== data.booking.length) { // времена повторяются
-                // console.error(field, 'нельзя быть в одно время на разных выступлениях')
-                notification.show("нельзя быть в одно время на разных выступлениях", false)
+                if(field !== 'time')
+                    data[field] = val
             }
         })
+
+        if (!times.size){
+            notification.show("вы не выбрали комика и время", false)
+            return
+        }
+        // console.log(field, times.size, data.booking.length)
+        if (times.size !== data.booking.length) { // времена повторяются
+            // console.error(field, 'нельзя быть в одно время на разных выступлениях')
+            notification.show("нельзя быть в одно время на разных выступлениях", false)
+            return
+        }
+        let isSend = false;
+        const method = bookingForm.getAttribute("method")
+        if(method === 'PATCH'){
+            console.log('patch ticket data:', times.size, data.booking.length, data)
+            isSend = await sendData(method, data, data.ticket)
+        }else{
+            console.log('add ticket data:', times.size, data.booking.length, data)
+            isSend = await sendData(method, data, data.ticket)
+        }
+        if(isSend){
+            notification.show("Бронь принята", true)
+            bookingForm.reset()
+            bookingComediansList.textContent = ''
+            const comedianBlock = createComedianBlock()
+            bookingComediansList.append(comedianBlock)
+            changeSection()
+        }
     })
 
     const validate = new JustValidate(bookingForm, {
@@ -62,7 +97,7 @@ export const initForm = (bookingForm, bookingInpPhone, bookingInpTicket, booking
             errorMessage: 'неверный телефон',
         },
     ])
-    validate.addField(bookingInpTicket, [ // '.booking__input_tiket'
+    validate.addField(bookingInpTicket, [ // '.booking__input_ticket'
         {
             rule: 'required',
             errorMessage: 'заполните номер билета',
