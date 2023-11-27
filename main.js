@@ -36,9 +36,9 @@ const init = async () => {
         return
 
     document.querySelector('.event__info-item_comedians .event__info-number').textContent = comedians.length
-    for (const comed of comedians) {
-        console.log('comed.comedian:', comed.comedian)
-    }
+    // for (const comed of comedians) {
+    //     console.log('comed.comedian:', comed.comedian)
+    // }
 
     const comedianBlock = createComedianBlock(comedians)
     bookingComediansList.append(comedianBlock)
