@@ -1,8 +1,11 @@
 import {notification} from "../main.js";
 
+const urlBase = 'https://comedy-back.glitch.me/'
+// const urlBase = 'http://localhost:8080/'
+
 export async function getComedians() {
     try {
-        const resp = await fetch('http://localhost:8080/comedians')
+        const resp = await fetch(urlBase + 'comedians')
         if (!resp)
             throw new Error(`Сервер вернул ошибку ${resp.status}`)
         return resp.json()
@@ -15,7 +18,7 @@ export async function getComedians() {
 
 export async function sendData(method, data, id) {
     try {
-        const url = `http://localhost:8080/clients${(id ? `/${id}` : '')}`
+        const url = urlBase + `clients${(id ? `/${id}` : '')}`
         console.log('sendData method:', method, 'url:', url)
         const resp = await fetch(
             url,
