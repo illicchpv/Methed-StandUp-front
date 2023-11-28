@@ -13,6 +13,8 @@ export const initChangeSection = (bookingForm,
 
     const changeSection = () => {
         event.classList.toggle('event_hidden')
+        eventButtonEdit.classList.toggle('button_hidden')
+        eventButtonReserve.classList.toggle('button_hidden')
         booking.classList.toggle('booking_hidden')
     }
 

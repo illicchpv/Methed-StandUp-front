@@ -1,17 +1,27 @@
-export class Notification {
+export class HtmlNotification {
     static instance
     constructor() {
-        if(Notification.instance)
-            return Notification.instance
+        if(HtmlNotification.instance)
+            return HtmlNotification.instance
         this.timeout = 3000
-        Notification.instance = this
+        HtmlNotification.instance = this
     }
     static getInstance(){
-        if(!Notification.instance)
-            Notification.instance = new Notification()
-        return Notification.instance
+        if(!HtmlNotification.instance)
+            HtmlNotification.instance = new HtmlNotification()
+        return HtmlNotification.instance
     }
     show(message, isSuccess){
+
+        if ("Notification" in window) {
+            Notification.requestPermission().then(function (permission) {
+                if (permission === "granted") {
+                    const nInst = new Notification("Stand Up Notification!", { body: message });
+                    setTimeout(() => nInst.close(), this.timeout);
+                }
+            });
+        }
+
         const notification = this.createNotification(message, isSuccess)
         document.body.append(notification)
         this.animationNotification(notification, true)

@@ -16,6 +16,7 @@
   visibility: visible;
 }
 .event_hidden{
+  /*display: none;*/
   opacity: 0;
   visibility: hidden;
   position: absolute;
@@ -72,6 +73,9 @@
   gap: 8px;
   align-items: center;
   font-size: 18px;
+}
+.button_hidden{
+  display: none;
 }
 
 @media (max-width: 1024px){

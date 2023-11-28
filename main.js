@@ -1,6 +1,6 @@
 import './style.css'
 import TomSelect from 'tom-select'
-import {Notification} from './scripts/Notification.js'
+import {HtmlNotification} from './scripts/HtmlNotification.js'
 import Inputmask from 'inputmask'
 import JustValidate from 'just-validate';
 import {initForm} from "./scripts/form.js";
@@ -8,7 +8,7 @@ import {getComedians} from "./scripts/api.js";
 import {createComedianBlock} from "./scripts/comedians.js";
 import {initChangeSection} from "./scripts/changeSection.js";
 
-export const notification = Notification.getInstance()
+export const notification = HtmlNotification.getInstance()
 // console.log('notification:', notification)
 // setTimeout(()=>{
 //     // notification.show("test message", true)
