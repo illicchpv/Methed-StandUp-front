@@ -14,7 +14,7 @@ export class HtmlNotification {
     show(message, isSuccess){
 
         if ("Notification" in window) {
-            Notification.requestPermission().then(function (permission) {
+            Notification.requestPermission().then((permission) => {
                 if (permission === "granted") {
                     const nInst = new Notification("Stand Up Notification!", { body: message });
                     setTimeout(() => nInst.close(), this.timeout);

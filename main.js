@@ -7,6 +7,7 @@ import {initForm} from "./scripts/form.js";
 import {getComedians} from "./scripts/api.js";
 import {createComedianBlock} from "./scripts/comedians.js";
 import {initChangeSection} from "./scripts/changeSection.js";
+import { initQrPage } from './scripts/qrpage.js';
 
 export const notification = HtmlNotification.getInstance()
 // console.log('notification:', notification)
@@ -16,6 +17,11 @@ export const notification = HtmlNotification.getInstance()
 // }, 300)
 
 const init = async () => {
+
+    if(window.location.pathname.endsWith('qr.html')){
+        return initQrPage();
+    }
+
     const bookingComediansList = document.querySelector('.booking__comedians-list')
     const bookingForm = document.querySelector('.booking__form')
     // document.querySelector('.event__info-item_comedians .event__info-number')
