@@ -1,4 +1,5 @@
 // http://localhost:5173/Methed-StandUp-front/qr.html?t=987654321
+// https://illicchpv.github.io/Methed-StandUp-front/qr.html?t=12344321
 
 import { HtmlNotification } from "./HtmlNotification"
 import { getClient, getComedians } from "./api"
